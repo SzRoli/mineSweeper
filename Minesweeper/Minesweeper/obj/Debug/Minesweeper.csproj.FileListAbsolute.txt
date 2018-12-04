@@ -8,3 +8,13 @@ C:\Users\Roland\source\repos\Minesweeper\Minesweeper\obj\Debug\Minesweeper.cspro
 C:\Users\Roland\source\repos\Minesweeper\Minesweeper\obj\Debug\Minesweeper.csproj.CoreCompileInputs.cache
 C:\Users\Roland\source\repos\Minesweeper\Minesweeper\obj\Debug\Minesweeper.exe
 C:\Users\Roland\source\repos\Minesweeper\Minesweeper\obj\Debug\Minesweeper.pdb
+B:\Beadando\mineSweeper\Minesweeper\Minesweeper\bin\Debug\Minesweeper.exe.config
+B:\Beadando\mineSweeper\Minesweeper\Minesweeper\bin\Debug\Minesweeper.exe
+B:\Beadando\mineSweeper\Minesweeper\Minesweeper\bin\Debug\Minesweeper.pdb
+B:\Beadando\mineSweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.csprojAssemblyReference.cache
+B:\Beadando\mineSweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Form1.resources
+B:\Beadando\mineSweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.Properties.Resources.resources
+B:\Beadando\mineSweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.csproj.GenerateResource.cache
+B:\Beadando\mineSweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.csproj.CoreCompileInputs.cache
+B:\Beadando\mineSweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.exe
+B:\Beadando\mineSweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.pdb

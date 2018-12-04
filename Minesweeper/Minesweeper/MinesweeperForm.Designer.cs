@@ -42,10 +42,12 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackgroundImage = global::Minesweeper.Properties.Resources.MINESWEEPER_tray;
-            this.pictureBox1.Location = new System.Drawing.Point(216, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(244, 9);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(87, 43);
+            this.pictureBox1.Size = new System.Drawing.Size(35, 35);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.LoadGame);
@@ -65,7 +67,7 @@
         #endregion
 
         private TileGrid tileGrid;
-        private System.Windows.Forms.PictureBox gameButton;
+        //private System.Windows.Forms.PictureBox PictureBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
