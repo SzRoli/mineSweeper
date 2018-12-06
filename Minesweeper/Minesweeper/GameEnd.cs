@@ -12,28 +12,39 @@ using System.Data.SqlClient;
 using System.Timers;
 namespace Minesweeper
 {
+    
     public partial class GameEnd : Form
     {
-        public GameEnd()
+        private Form1 frm2;
+        
+        SqlConnection cn = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB;Database=TopLista");
+        SqlCommand cmd = new SqlCommand();
+        String time = "";
+        String level = "";
+        public GameEnd(String ido, String szint)
         {
+            level = szint;
+            time = ido;
+            cmd.Connection = cn;
             InitializeComponent();
-            
-            
-            //command.Parameters.Add("@Time", );
-            
-            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void Bevitel_Click(object sender, EventArgs e)
         {
-            string conn = @"Server=(localdb)\MSSQLLocalDB;Database=TopLista";
-            SqlConnection connection = new SqlConnection(conn);
-            connection.Open();
-            string sql = "INSERT INTO lista (Name) VALUES (@Name)";
-            SqlCommand command = new SqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@Name", text_Name_Box.Text);
+            
+            frm2 = new Form1();
+            if (nameBox.Text != "")
+            {
+                cn.Open();
+                cmd.CommandText = "INSERT INTO lista (Name,Time,Level) VALUES ('" + nameBox.Text + "', '" + time + "', '" + level + "' )";
+                cmd.ExecuteNonQuery();
+                cmd.Clone();
+                MessageBox.Show("Record Inserted!");
+                nameBox.Text = "";
+            }
+            
             
         }
-
     }
 }

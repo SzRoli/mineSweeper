@@ -28,39 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.text_Name_Box = new System.Windows.Forms.TextBox();
-            this.add_Name = new System.Windows.Forms.Button();
+            this.nameBox = new System.Windows.Forms.TextBox();
+            this.Bevitel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // text_Name_Box
+            // nameBox
             // 
-            this.text_Name_Box.Location = new System.Drawing.Point(22, 34);
-            this.text_Name_Box.Name = "text_Name_Box";
-            this.text_Name_Box.Size = new System.Drawing.Size(100, 20);
-            this.text_Name_Box.TabIndex = 0;
-            this.text_Name_Box.Tag = "nameBox";
-            
+            this.nameBox.Location = new System.Drawing.Point(82, 61);
+            this.nameBox.Name = "nameBox";
+            this.nameBox.Size = new System.Drawing.Size(100, 20);
+            this.nameBox.TabIndex = 0;
+            this.nameBox.Tag = "nameBox";
             // 
-            // add_Name
+            // Bevitel
             // 
-            this.add_Name.Location = new System.Drawing.Point(33, 77);
-            this.add_Name.Name = "add_Name";
-            this.add_Name.Size = new System.Drawing.Size(75, 23);
-            this.add_Name.TabIndex = 1;
-            this.add_Name.Tag = "addName";
-            this.add_Name.Text = "Ok";
-            this.add_Name.UseVisualStyleBackColor = true;
-            this.add_Name.Click += new System.EventHandler(this.button1_Click);
+            this.Bevitel.Location = new System.Drawing.Point(91, 107);
+            this.Bevitel.Name = "Bevitel";
+            this.Bevitel.Size = new System.Drawing.Size(75, 23);
+            this.Bevitel.TabIndex = 1;
+            this.Bevitel.Tag = "Bevitel";
+            this.Bevitel.Text = "Bevitel";
+            this.Bevitel.UseVisualStyleBackColor = true;
+            this.Bevitel.Click += new System.EventHandler(this.Bevitel_Click);
             // 
             // GameEnd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(162, 138);
-            this.Controls.Add(this.add_Name);
-            this.Controls.Add(this.text_Name_Box);
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.Bevitel);
+            this.Controls.Add(this.nameBox);
             this.Name = "GameEnd";
-            this.Text = "GameEnd";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -70,5 +66,7 @@
 
         private System.Windows.Forms.TextBox text_Name_Box;
         private System.Windows.Forms.Button add_Name;
+        private System.Windows.Forms.TextBox nameBox;
+        private System.Windows.Forms.Button Bevitel;
     }
 }
