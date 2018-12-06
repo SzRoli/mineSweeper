@@ -6,16 +6,22 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using Minesweeper.Properties;
+
 namespace Minesweeper
 {
+    
     public partial class Form1 : Form
     {
+        public static bool end = false;
+        int s = 0, m = 0, h = 0;
+        
         private Difficulty difficulty;
-
         public Form1()
         {
+            
             InitializeComponent();
             //this.LoadGame(null, null);
         }
@@ -24,6 +30,11 @@ namespace Minesweeper
 
         private void LoadGame(object sender, EventArgs e)
         {
+
+            end = false;
+            timer1.Start();
+            
+
             int x, y, mines;
             switch (this.difficulty)
             {
@@ -52,20 +63,51 @@ namespace Minesweeper
 
         private void MenuStrip_Game_New_Click(object sender, EventArgs e)
         {
+            s = m = h = 0;
+            timer1.Stop();
             this.LoadGame(null,null);
+            
+            
+
         }
         private void MenuStrip_Game_Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            s++;
+            if(s==60)
+            {
+                s = 0;
+                m++;
+            }
+            if (m == 60)
+            {
+                h++;
+            }
+            time.Text = string.Format("{0}:{1}:{2}", h.ToString().PadLeft(2, '0'), m.ToString().PadLeft(2, '0'), s.ToString().PadLeft(2, '0'));
+            if (end == true)
+            {
+                timer1.Stop();
+            }
+
+        }
+
         private void MenuStrip_Game_DifficultyChanged(object sender, EventArgs e)
         {
+            
+            s = m = h = 0;
+            timer1.Stop();
             this.difficulty = (Difficulty)Enum.Parse(typeof(Difficulty), (string)((ToolStripMenuItem)sender).Tag);
             this.LoadGame(null, null);
+
         }
+        
         private class TileGrid : Panel
         {
+            
             private static readonly HashSet<Tile> gridSearchBlackList = new HashSet<Tile>();
             private static readonly Random random = new Random();
 
@@ -73,6 +115,7 @@ namespace Minesweeper
             private int mines;
             private int flags;
             private bool minesGenerated;
+            
 
             private Tile this[Point point] => (Tile)this.Controls[$"Tile_{point.X}_{point.Y}"];
             private void Tile_MouseDown(object sender, MouseEventArgs e)
@@ -80,6 +123,7 @@ namespace Minesweeper
                 Tile tile = (Tile)sender;
                 if (!tile.Opened)
                 {
+                    
                     switch (e.Button)
                     {
                         case MouseButtons.Left when !tile.Flagged:
@@ -113,6 +157,7 @@ namespace Minesweeper
                 }
                 this.CheckForWin();
                 
+                
             }
             internal void LoadGrid(Size gridSize, int mines)
             {
@@ -135,6 +180,7 @@ namespace Minesweeper
                 {
                     tile.SetAdjacentTiles();
                 }
+                
             }
 
             private void GenerateMines(Tile safeTile)
@@ -168,8 +214,10 @@ namespace Minesweeper
                     tile.MouseDown -= this.Tile_MouseDown;
                     if (gameLost)
                     {
+                        end = true;
                         tile.Image = !tile.Opened && tile.Mined && !tile.Flagged ? Resources.MINESWEEPER_M :
                             tile.Flagged && !tile.Mined ? Resources.MINESWEEPER_tray : tile.Image;
+                        
                     }
 
                     if (tile.Opened)
@@ -182,11 +230,14 @@ namespace Minesweeper
             {
                 if(this.flags != 0 && this.Controls.OfType<Tile>().Count(tile => tile.Opened || tile.Flagged) != this.gridSize.Width * this.gridSize.Height)
                 {
+                    
                     return;
                 }
+               // t.stop();
                 MessageBox.Show("Gratulálok őn győzött!","Játék vége!",MessageBoxButtons.OK);
                 this.DisableTiles(false);
-                
+                end = true;
+
 
             }
             private class Tile : PictureBox
@@ -275,7 +326,11 @@ namespace Minesweeper
                     this.Opened = true;
                     this.Image = (Image)Resources.ResourceManager.GetObject($"MINESWEEPER_{this.AdjacentMines}");
                 }
+
+                
+              
             }
+            
         }
 
         
