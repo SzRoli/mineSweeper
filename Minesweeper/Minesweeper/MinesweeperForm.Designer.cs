@@ -29,46 +29,127 @@
         private void InitializeComponent()
         {
             this.tileGrid = new Minesweeper.Form1.TileGrid();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip_Game = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip_Game_New = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuStrip_Game_Easy = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip_Game_Medium = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip_Game_Hard = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip_Game_Break2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuStrip_Game_Exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tileGrid
             // 
             this.tileGrid.Location = new System.Drawing.Point(12, 70);
             this.tileGrid.Name = "tileGrid";
-            this.tileGrid.Size = new System.Drawing.Size(482, 292);
+            this.tileGrid.Size = new System.Drawing.Size(213, 165);
             this.tileGrid.TabIndex = 0;
             // 
-            // pictureBox1
+            // menuStrip1
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.BackgroundImage = global::Minesweeper.Properties.Resources.MINESWEEPER_tray;
-            this.pictureBox1.Location = new System.Drawing.Point(244, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(35, 35);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.LoadGame);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip_Game});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(807, 24);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip";
+            // 
+            // menuStrip_Game
+            // 
+            this.menuStrip_Game.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip_Game_New,
+            this.toolStripSeparator1,
+            this.menuStrip_Game_Easy,
+            this.menuStrip_Game_Medium,
+            this.menuStrip_Game_Hard,
+            this.menuStrip_Game_Break2,
+            this.menuStrip_Game_Exit});
+            this.menuStrip_Game.Name = "menuStrip_Game";
+            this.menuStrip_Game.Size = new System.Drawing.Size(50, 20);
+            this.menuStrip_Game.Text = "Game";
+            // 
+            // menuStrip_Game_New
+            // 
+            this.menuStrip_Game_New.Name = "menuStrip_Game_New";
+            this.menuStrip_Game_New.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.menuStrip_Game_New.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip_Game_New.Text = "New";
+            this.menuStrip_Game_New.Click += new System.EventHandler(this.MenuStrip_Game_New_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // menuStrip_Game_Easy
+            // 
+            this.menuStrip_Game_Easy.Name = "menuStrip_Game_Easy";
+            this.menuStrip_Game_Easy.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip_Game_Easy.Tag = "Easy";
+            this.menuStrip_Game_Easy.Text = "Easy";
+            this.menuStrip_Game_Easy.Click += new System.EventHandler(this.MenuStrip_Game_DifficultyChanged);
+            // 
+            // menuStrip_Game_Medium
+            // 
+            this.menuStrip_Game_Medium.Name = "menuStrip_Game_Medium";
+            this.menuStrip_Game_Medium.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip_Game_Medium.Tag = "Medium";
+            this.menuStrip_Game_Medium.Text = "Medium";
+            this.menuStrip_Game_Medium.Click += new System.EventHandler(this.MenuStrip_Game_DifficultyChanged);
+            // 
+            // menuStrip_Game_Hard
+            // 
+            this.menuStrip_Game_Hard.Name = "menuStrip_Game_Hard";
+            this.menuStrip_Game_Hard.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip_Game_Hard.Tag = "Hard";
+            this.menuStrip_Game_Hard.Text = "Hard";
+            this.menuStrip_Game_Hard.Click += new System.EventHandler(this.MenuStrip_Game_DifficultyChanged);
+            // 
+            // menuStrip_Game_Break2
+            // 
+            this.menuStrip_Game_Break2.Name = "menuStrip_Game_Break2";
+            this.menuStrip_Game_Break2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // menuStrip_Game_Exit
+            // 
+            this.menuStrip_Game_Exit.Name = "menuStrip_Game_Exit";
+            this.menuStrip_Game_Exit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.menuStrip_Game_Exit.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip_Game_Exit.Tag = "Exit";
+            this.menuStrip_Game_Exit.Text = "Exit";
+            this.menuStrip_Game_Exit.Click += new System.EventHandler(this.MenuStrip_Game_Exit_Click);
             // 
             // Form1
             // 
-            this.ClientSize = new System.Drawing.Size(523, 407);
+            this.ClientSize = new System.Drawing.Size(807, 524);
             this.Controls.Add(this.tileGrid);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private TileGrid tileGrid;
-        //private System.Windows.Forms.PictureBox PictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menuStrip_Game;
+        private System.Windows.Forms.ToolStripMenuItem menuStrip_Game_New;
+        private System.Windows.Forms.ToolStripSeparator menuStrip_Game_Break2;
+        private System.Windows.Forms.ToolStripMenuItem menuStrip_Game_Easy;
+        private System.Windows.Forms.ToolStripMenuItem menuStrip_Game_Medium;
+        private System.Windows.Forms.ToolStripMenuItem menuStrip_Game_Hard;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem menuStrip_Game_Exit;
     }
 }
 

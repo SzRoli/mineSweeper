@@ -12,12 +12,12 @@ namespace Minesweeper
 {
     public partial class Form1 : Form
     {
-        private Difficulty difficulty = Difficulty.Hard;
+        private Difficulty difficulty;
 
         public Form1()
         {
             InitializeComponent();
-            this.LoadGame(null, null);
+            //this.LoadGame(null, null);
         }
 
         private enum Difficulty { Hard, Medium, Easy}
@@ -31,7 +31,6 @@ namespace Minesweeper
                     x = 9;
                     y = 9;
                     mines = 10;
-
                     break;
                 case Difficulty.Medium:
                     x = 16;
@@ -42,7 +41,6 @@ namespace Minesweeper
                     x = 30;
                     y = 16;
                     mines = 99;
-
                     break;
                 default:
                     throw new InvalidOperationException("Not found this difficulty");
@@ -52,6 +50,20 @@ namespace Minesweeper
             this.MinimumSize = new Size(this.tileGrid.Width + 36, this.tileGrid.Height + 98);
         }
 
+        private void MenuStrip_Game_New_Click(object sender, EventArgs e)
+        {
+            this.LoadGame(null,null);
+        }
+        private void MenuStrip_Game_Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void MenuStrip_Game_DifficultyChanged(object sender, EventArgs e)
+        {
+            this.difficulty = (Difficulty)Enum.Parse(typeof(Difficulty), (string)((ToolStripMenuItem)sender).Tag);
+            this.LoadGame(null, null);
+        }
         private class TileGrid : Panel
         {
             private static readonly HashSet<Tile> gridSearchBlackList = new HashSet<Tile>();
@@ -81,13 +93,26 @@ namespace Minesweeper
                             }
                             else
                             {
-
+                                tile.TestAdjacentTiles();
+                                gridSearchBlackList.Clear();
                             }
                             break;
                         case MouseButtons.Right when this.flags > 0:
+                            if (tile.Flagged)
+                            {
+                                tile.Flagged = false;
+                                this.flags--;
+                            }
+                            else
+                            {
+                                tile.Flagged = true;
+                                this.flags++;
+                            }
                             break;
                     }
                 }
+                this.CheckForWin();
+                
             }
             internal void LoadGrid(Size gridSize, int mines)
             {
@@ -96,7 +121,7 @@ namespace Minesweeper
                 this.gridSize = gridSize;
                 this.mines = mines;
                 this.flags = mines;
-                this.Size = new Size(gridSize.Width * Tile.LENGTH, gridSize.Height * Tile.LENGTH +15);
+                this.Size = new Size(gridSize.Width * Tile.LENGTH, gridSize.Height * Tile.LENGTH + 35);
                 for(int x = 0; x < gridSize.Width; x++)
                 {
                     for(int y = 0; y<gridSize.Height; y++)
@@ -146,9 +171,24 @@ namespace Minesweeper
                         tile.Image = !tile.Opened && tile.Mined && !tile.Flagged ? Resources.MINESWEEPER_M :
                             tile.Flagged && !tile.Mined ? Resources.MINESWEEPER_tray : tile.Image;
                     }
+
+                    if (tile.Opened)
+                    {
+                        tile.Image = Resources.MINESWEEPER_8;
+                    }
                 }
             }
+            private void CheckForWin()
+            {
+                if(this.flags != 0 && this.Controls.OfType<Tile>().Count(tile => tile.Opened || tile.Flagged) != this.gridSize.Width * this.gridSize.Height)
+                {
+                    return;
+                }
+                MessageBox.Show("Gratulálok őn győzött!","Játék vége!",MessageBoxButtons.OK);
+                this.DisableTiles(false);
+                
 
+            }
             private class Tile : PictureBox
             {
                 internal const int LENGTH = 20;
@@ -159,7 +199,7 @@ namespace Minesweeper
 
                 private bool flagged;
 
-               
+                //Tile definiálása
                 internal Tile(int x, int y)
                 {
                     this.Name = $"Tile_{x}_{y}";
@@ -221,7 +261,7 @@ namespace Minesweeper
                             tile.TestAdjacentTiles();
                         }
                     }
-                    this.open();
+                    this.Open();
                 }
 
                 internal void Mine()
@@ -233,9 +273,11 @@ namespace Minesweeper
                 private void Open()
                 {
                     this.Opened = true;
-                    this.Image = (Image)Resources.ResourceManager.GetObject($"EmptyTile_{this.AdjacentMines}");
+                    this.Image = (Image)Resources.ResourceManager.GetObject($"MINESWEEPER_{this.AdjacentMines}");
                 }
             }
         }
+
+        
     }
 }
