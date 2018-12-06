@@ -9,13 +9,16 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
 using Minesweeper.Properties;
-
+using System.Threading;
+using System.Data.SqlClient;
 namespace Minesweeper
 {
     
     public partial class Form1 : Form
     {
-        public static bool end = false;
+        Thread th;
+        public static bool lostEnd = false;
+        public static bool winEnd = false;
         int s = 0, m = 0, h = 0;
         
         private Difficulty difficulty;
@@ -31,7 +34,8 @@ namespace Minesweeper
         private void LoadGame(object sender, EventArgs e)
         {
 
-            end = false;
+            lostEnd = false;
+            winEnd = false;
             timer1.Start();
             
 
@@ -88,13 +92,37 @@ namespace Minesweeper
                 h++;
             }
             time.Text = string.Format("{0}:{1}:{2}", h.ToString().PadLeft(2, '0'), m.ToString().PadLeft(2, '0'), s.ToString().PadLeft(2, '0'));
-            if (end == true)
+            if (winEnd == true)
+            {
+                timer1.Stop();
+                
+                th = new Thread(OpenNewForm);
+                th.SetApartmentState(ApartmentState.STA);
+                th.Start();
+            }
+            if (lostEnd == true)
             {
                 timer1.Stop();
             }
 
         }
+        private void OpenNewForm(object obj)
+        {
+            Application.Run(new GameEnd());
+        }
 
+        private void menuStrip_Game_TopList_Click(object sender, EventArgs e)
+        {
+            th = new Thread(OpenNewForm2);
+            th.SetApartmentState(ApartmentState.STA);
+            th.Start();
+            
+            
+        }
+        private void OpenNewForm2(object obj)
+        {
+            Application.Run(new DataBaseForm());
+        }
         private void MenuStrip_Game_DifficultyChanged(object sender, EventArgs e)
         {
             
@@ -214,7 +242,7 @@ namespace Minesweeper
                     tile.MouseDown -= this.Tile_MouseDown;
                     if (gameLost)
                     {
-                        end = true;
+                        lostEnd = true;
                         tile.Image = !tile.Opened && tile.Mined && !tile.Flagged ? Resources.MINESWEEPER_M :
                             tile.Flagged && !tile.Mined ? Resources.MINESWEEPER_tray : tile.Image;
                         
@@ -226,6 +254,7 @@ namespace Minesweeper
                     }
                 }
             }
+            
             private void CheckForWin()
             {
                 if(this.flags != 0 && this.Controls.OfType<Tile>().Count(tile => tile.Opened || tile.Flagged) != this.gridSize.Width * this.gridSize.Height)
@@ -236,7 +265,9 @@ namespace Minesweeper
                // t.stop();
                 MessageBox.Show("Gratulálok őn győzött!","Játék vége!",MessageBoxButtons.OK);
                 this.DisableTiles(false);
-                end = true;
+                winEnd = true;
+                
+                
 
 
             }

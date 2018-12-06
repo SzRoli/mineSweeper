@@ -28,3 +28,5 @@ E:\Beadando\mineSweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.pdb
 E:\Beadando\mineSweeper\Minesweeper\Minesweeper\bin\Debug\Minesweeper.exe.config
 E:\Beadando\mineSweeper\Minesweeper\Minesweeper\bin\Debug\Minesweeper.exe
 E:\Beadando\mineSweeper\Minesweeper\Minesweeper\bin\Debug\Minesweeper.pdb
+E:\Beadando\mineSweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.DataBaseForm.resources
+E:\Beadando\mineSweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.GameEnd.resources

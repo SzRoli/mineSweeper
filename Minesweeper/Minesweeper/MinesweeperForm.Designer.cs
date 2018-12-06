@@ -40,10 +40,12 @@
             this.menuStrip_Game_Easy = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip_Game_Medium = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip_Game_Hard = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip_Game_Break2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuStrip_Game_Break3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip_Game_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.time = new System.Windows.Forms.TextBox();
+            this.menuStrip_Game_TopList = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +74,9 @@
             this.menuStrip_Game_Easy,
             this.menuStrip_Game_Medium,
             this.menuStrip_Game_Hard,
-            this.menuStrip_Game_Break2,
+            this.toolStripSeparator2,
+            this.menuStrip_Game_TopList,
+            this.menuStrip_Game_Break3,
             this.menuStrip_Game_Exit});
             this.menuStrip_Game.Name = "menuStrip_Game";
             this.menuStrip_Game.Size = new System.Drawing.Size(50, 20);
@@ -82,19 +86,19 @@
             // 
             this.menuStrip_Game_New.Name = "menuStrip_Game_New";
             this.menuStrip_Game_New.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.menuStrip_Game_New.Size = new System.Drawing.Size(141, 22);
+            this.menuStrip_Game_New.Size = new System.Drawing.Size(180, 22);
             this.menuStrip_Game_New.Text = "New";
             this.menuStrip_Game_New.Click += new System.EventHandler(this.MenuStrip_Game_New_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(138, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // menuStrip_Game_Easy
             // 
             this.menuStrip_Game_Easy.Name = "menuStrip_Game_Easy";
-            this.menuStrip_Game_Easy.Size = new System.Drawing.Size(141, 22);
+            this.menuStrip_Game_Easy.Size = new System.Drawing.Size(180, 22);
             this.menuStrip_Game_Easy.Tag = "Easy";
             this.menuStrip_Game_Easy.Text = "Easy";
             this.menuStrip_Game_Easy.Click += new System.EventHandler(this.MenuStrip_Game_DifficultyChanged);
@@ -102,7 +106,7 @@
             // menuStrip_Game_Medium
             // 
             this.menuStrip_Game_Medium.Name = "menuStrip_Game_Medium";
-            this.menuStrip_Game_Medium.Size = new System.Drawing.Size(141, 22);
+            this.menuStrip_Game_Medium.Size = new System.Drawing.Size(180, 22);
             this.menuStrip_Game_Medium.Tag = "Medium";
             this.menuStrip_Game_Medium.Text = "Medium";
             this.menuStrip_Game_Medium.Click += new System.EventHandler(this.MenuStrip_Game_DifficultyChanged);
@@ -110,21 +114,21 @@
             // menuStrip_Game_Hard
             // 
             this.menuStrip_Game_Hard.Name = "menuStrip_Game_Hard";
-            this.menuStrip_Game_Hard.Size = new System.Drawing.Size(141, 22);
+            this.menuStrip_Game_Hard.Size = new System.Drawing.Size(180, 22);
             this.menuStrip_Game_Hard.Tag = "Hard";
             this.menuStrip_Game_Hard.Text = "Hard";
             this.menuStrip_Game_Hard.Click += new System.EventHandler(this.MenuStrip_Game_DifficultyChanged);
             // 
-            // menuStrip_Game_Break2
+            // menuStrip_Game_Break3
             // 
-            this.menuStrip_Game_Break2.Name = "menuStrip_Game_Break2";
-            this.menuStrip_Game_Break2.Size = new System.Drawing.Size(138, 6);
+            this.menuStrip_Game_Break3.Name = "menuStrip_Game_Break3";
+            this.menuStrip_Game_Break3.Size = new System.Drawing.Size(177, 6);
             // 
             // menuStrip_Game_Exit
             // 
             this.menuStrip_Game_Exit.Name = "menuStrip_Game_Exit";
             this.menuStrip_Game_Exit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.menuStrip_Game_Exit.Size = new System.Drawing.Size(141, 22);
+            this.menuStrip_Game_Exit.Size = new System.Drawing.Size(180, 22);
             this.menuStrip_Game_Exit.Tag = "Exit";
             this.menuStrip_Game_Exit.Text = "Exit";
             this.menuStrip_Game_Exit.Click += new System.EventHandler(this.MenuStrip_Game_Exit_Click);
@@ -145,6 +149,19 @@
             this.time.TabIndex = 4;
             this.time.Text = "00:00:00";
             this.time.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // menuStrip_Game_TopList
+            // 
+            this.menuStrip_Game_TopList.Name = "menuStrip_Game_TopList";
+            this.menuStrip_Game_TopList.Size = new System.Drawing.Size(180, 22);
+            this.menuStrip_Game_TopList.Tag = "TopList";
+            this.menuStrip_Game_TopList.Text = "TopList";
+            this.menuStrip_Game_TopList.Click += new System.EventHandler(this.menuStrip_Game_TopList_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // Form1
             // 
@@ -169,7 +186,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuStrip_Game;
         private System.Windows.Forms.ToolStripMenuItem menuStrip_Game_New;
-        private System.Windows.Forms.ToolStripSeparator menuStrip_Game_Break2;
+        private System.Windows.Forms.ToolStripSeparator menuStrip_Game_Break3;
         private System.Windows.Forms.ToolStripMenuItem menuStrip_Game_Easy;
         private System.Windows.Forms.ToolStripMenuItem menuStrip_Game_Medium;
         private System.Windows.Forms.ToolStripMenuItem menuStrip_Game_Hard;
@@ -177,6 +194,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuStrip_Game_Exit;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TextBox time;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem menuStrip_Game_TopList;
     }
 }
 
