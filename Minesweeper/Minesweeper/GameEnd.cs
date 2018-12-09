@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Timers;
+
 namespace Minesweeper
 {
     
@@ -21,6 +22,8 @@ namespace Minesweeper
         SqlCommand cmd = new SqlCommand();
         String time = "";
         String level = "";
+        DateTime myDateTime = DateTime.Now;
+        string sqlFormattedDate = DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString();//ToString("yyyy-mm-dd HH:mm:ss");
         public GameEnd(String ido, String szint)
         {
             level = szint;
@@ -37,7 +40,7 @@ namespace Minesweeper
             if (nameBox.Text != "")
             {
                 cn.Open();
-                cmd.CommandText = "INSERT INTO lista (Name,Time,Level) VALUES ('" + nameBox.Text + "', '" + time + "', '" + level + "' )";
+                cmd.CommandText = "INSERT INTO lista (Name,Time,Date,Level) VALUES ('" + nameBox.Text + "', '" + time + "', '" + sqlFormattedDate + "', '" + level + "' )";
                 cmd.ExecuteNonQuery();
                 cmd.Clone();
                 MessageBox.Show("Record Inserted!");

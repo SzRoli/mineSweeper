@@ -129,13 +129,7 @@ namespace Minesweeper
             Application.Run(new DataBaseForm());
         }
 
-        private void showAllMineToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            /*if (show)
-                show = false;
-            show = true;*/
-            
-        }
+        
         private void MenuStrip_Game_DifficultyChanged(object sender, EventArgs e)
         {
             
@@ -145,7 +139,23 @@ namespace Minesweeper
             this.LoadGame(null, null);
 
         }
-        
+        private void showAllMineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (show)
+            {
+                
+                show = false;
+                MessageBox.Show("@{0}", show.ToString());
+
+            }
+            else
+            {
+               
+                show = true;
+                MessageBox.Show("@{0}", show.ToString());
+            }
+
+        }
         private class TileGrid : Panel
         {
             
@@ -162,6 +172,14 @@ namespace Minesweeper
             
             private void Tile_MouseDown(object sender, MouseEventArgs e)
             {
+                if (show)
+                {
+                    this.ShowMines();
+                }
+                if (!show)
+                {
+                    this.HideMines();
+                }
                 Tile tile = (Tile)sender;
                 if (!tile.Opened)
                 {
@@ -174,14 +192,7 @@ namespace Minesweeper
                             {
                                 this.GenerateMines(tile);
                             }
-                            /*if (show)
-                            {
-                                this.ShowMines();
-                            }
-                            if (!show)
-                            {
-                                this.HideMines();
-                            }*/
+                            
                             if (tile.Mined)
                             {
                                 this.DisableTiles(true);
@@ -284,7 +295,7 @@ namespace Minesweeper
                 foreach (Tile tile in this.Controls)
                 {
 
-                    if(!tile.Opened && tile.Mined && !tile.Flagged)
+                    if(!tile.Opened && tile.Mined)
                     {
                         tile.Image =Resources.MINESWEEPER_M;
                     }
@@ -296,9 +307,10 @@ namespace Minesweeper
                 foreach (Tile tile in this.Controls)
                 {
 
-                    
+                    if (!tile.Opened && tile.Mined && !tile.Flagged)
+                    {
                         tile.Image = Resources.Tile;
-                   
+                    }
                     
 
                 }
