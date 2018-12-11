@@ -40,7 +40,7 @@ namespace Minesweeper
             if (nameBox.Text != "")
             {
                 cn.Open();
-                cmd.CommandText = "INSERT INTO lista (Name,Time,Date,Level) VALUES ('" + nameBox.Text + "', '" + time + "', '" + sqlFormattedDate + "', '" + level + "' )";
+                cmd.CommandText = "INSERT INTO Lista (Name,Time,Date,Level) VALUES ('" + nameBox.Text + "', '" + time + "', '" + sqlFormattedDate + "', '" + level + "' )";
                 cmd.ExecuteNonQuery();
                 cmd.Clone();
                 MessageBox.Show("Record Inserted!");

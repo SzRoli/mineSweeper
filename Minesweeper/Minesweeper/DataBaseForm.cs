@@ -19,7 +19,7 @@ namespace Minesweeper
             string conn = @"Server=(localdb)\MSSQLLocalDB;Database=TopLista";
             SqlConnection connection = new SqlConnection(conn);
             connection.Open();
-            string sql = "SELECT * FROM lista";
+            string sql = "SELECT * FROM Lista";
             SqlCommand command = new SqlCommand(sql, connection);
             SqlDataReader reader = command.ExecuteReader();
 

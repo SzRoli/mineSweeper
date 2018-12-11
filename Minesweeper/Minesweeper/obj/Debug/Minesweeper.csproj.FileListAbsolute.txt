@@ -30,3 +30,7 @@ E:\Beadando\mineSweeper\Minesweeper\Minesweeper\bin\Debug\Minesweeper.exe
 E:\Beadando\mineSweeper\Minesweeper\Minesweeper\bin\Debug\Minesweeper.pdb
 E:\Beadando\mineSweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.DataBaseForm.resources
 E:\Beadando\mineSweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.GameEnd.resources
+B:\Beadando\mineSweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.DataBaseForm.resources
+B:\Beadando\mineSweeper\Minesweeper\Minesweeper\obj\Debug\Minesweeper.GameEnd.resources
+B:\Beadando\mineSweeper\Minesweeper\Minesweeper\bin\Debug\Database.mdf
+B:\Beadando\mineSweeper\Minesweeper\Minesweeper\bin\Debug\Database_log.ldf

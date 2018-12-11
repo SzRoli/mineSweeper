@@ -34,7 +34,7 @@ namespace Minesweeper
 
         private enum Difficulty { Hard, Medium, Easy}
 
-        private void LoadGame(object sender, EventArgs e)
+        private void LoadGame()
         {
             masodperc = 0;
             lostEnd = false;
@@ -72,7 +72,7 @@ namespace Minesweeper
         {
             s = m = h = 0;
             timer1.Stop();
-            this.LoadGame(null,null);
+            this.LoadGame();
             
             
 
@@ -136,7 +136,7 @@ namespace Minesweeper
             s = m = h = 0;
             timer1.Stop();
             this.difficulty = (Difficulty)Enum.Parse(typeof(Difficulty), (string)((ToolStripMenuItem)sender).Tag);
-            this.LoadGame(null, null);
+            this.LoadGame();
 
         }
         private void showAllMineToolStripMenuItem_Click(object sender, EventArgs e)
